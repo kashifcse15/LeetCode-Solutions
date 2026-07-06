@@ -1,1 +1,85 @@
+class Solution { //BY KAHN'S Algorithm (BFS)
+public:
+    vector<int> topoSort(int V, vector<vector<int>>& adj) {
 
+        vector<int> indegree(V, 0);
+
+        // Calculate indegree of every node
+        for (int i = 0; i < V; i++) {
+            for (int neigh : adj[i]) {
+                indegree[neigh]++;
+            }
+        }
+
+        queue<int> q;
+
+        // Push all nodes having indegree 0
+        for (int i = 0; i < V; i++) {
+            if (indegree[i] == 0)
+                q.push(i);
+        }
+
+        vector<int> ans;
+
+        while (!q.empty()) {
+
+            int node = q.front();
+            q.pop();
+
+            ans.push_back(node);
+
+            for (int neigh : adj[node]) {
+
+                indegree[neigh]--;
+
+                if (indegree[neigh] == 0) {
+                    q.push(neigh);
+                }
+            }
+        }
+
+        return ans;
+    }
+};
+
+ 
+class Solution {        (DFS+STACK)
+public:
+
+    void dfs(int node, vector<vector<int>>& adj,
+             vector<int>& vis, stack<int>& st) {
+
+        vis[node] = 1;
+
+        for (int neigh : adj[node]) {
+            if (!vis[neigh]) {
+                dfs(neigh, adj, vis, st);
+            }
+        }
+
+        // Push after visiting all neighbors
+        st.push(node);
+    }
+
+    vector<int> topoSort(int V, vector<vector<int>>& adj) {
+
+        vector<int> vis(V, 0);
+        stack<int> st;
+
+        // Handle disconnected graph
+        for (int i = 0; i < V; i++) {
+            if (!vis[i]) {
+                dfs(i, adj, vis, st);
+            }
+        }
+
+        vector<int> ans;
+
+        while (!st.empty()) {
+            ans.push_back(st.top());
+            st.pop();
+        }
+
+        return ans;
+    }
+};

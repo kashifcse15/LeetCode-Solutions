@@ -9,6 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+//Remember to use Array to store the Node Values in Interviews
 class Solution {
 public:
     void post(TreeNode* root,vector<int>&ans){

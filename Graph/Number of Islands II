@@ -104,7 +104,7 @@ public:
                     int adjNodeNo = adjRow * m + adjCol;
 
                     if (ds.find(nodeNo) != ds.find(adjNodeNo)) {
-
+  b 
                         
                         ds.unionBySize(nodeNo, adjNodeNo);
                     }

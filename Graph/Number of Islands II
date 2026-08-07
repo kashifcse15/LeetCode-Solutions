@@ -58,3 +58,62 @@ void unionBySize(int u,int v){
     }
 }
 };
+
+
+class Solution {
+public:
+    vector<int> numOfIslands(int n, int m,
+                             vector<vector<int>> &operators) {
+
+        DisjointSet ds(n * m);
+
+        vector<vector<int>> vis(n, vector<int>(m, 0));
+
+        vector<int> ans;
+
+        int cnt = 0;
+
+        int dr[] = {-1, 0, 1, 0};
+        int dc[] = {0, 1, 0, -1};
+
+        for (auto &it : operators) {
+
+            int row = it[0];
+            int col = it[1];
+
+            // Already land
+            if (vis[row][col] == 1) {
+                ans.push_back(cnt);
+                continue;
+            }
+
+            vis[row][col] = 1;
+            cnt++;
+
+            int nodeNo = row * m + col;
+
+            for (int k = 0; k < 4; k++) {
+
+                int adjRow = row + dr[k];
+                int adjCol = col + dc[k];
+
+                if (adjRow >= 0 && adjRow < n &&
+                    adjCol >= 0 && adjCol < m &&
+                    vis[adjRow][adjCol] == 1) {
+
+                    int adjNodeNo = adjRow * m + adjCol;
+
+                    if (ds.find(nodeNo) != ds.find(adjNodeNo)) {
+
+                        
+                        ds.unionBySize(nodeNo, adjNodeNo);
+                    }
+                }
+            }
+
+            ans.push_back(cnt);
+        }
+
+        return ans;
+    }
+};

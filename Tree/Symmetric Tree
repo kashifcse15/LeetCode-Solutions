@@ -18,8 +18,10 @@ public:
         if(left == NULL && right == NULL) {
             return true;
         }
-
-       
+          // one NULL and one not NULL
+        if(left == NULL || right == NULL) {
+            return false;
+        }
 
         // values should match
         if(left->val != right->val) {

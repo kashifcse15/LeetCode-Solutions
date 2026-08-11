@@ -20,7 +20,7 @@ void solve(TreeNode* root, int targetSum,vector<int>&path,vector<vector<int>>&an
     }
     solve(root->left,targetSum-root->val,path,ans);
     solve(root->right,targetSum-root->val,path,ans);
-
+    path.pop_back()
     ;
 }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {

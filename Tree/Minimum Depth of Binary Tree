@@ -24,7 +24,7 @@ class Solution {
 public:
     int minDepth(TreeNode* root) {
 
-        
+        if (root == NULL) return 0;
 
         // only right child exists
         if (root->left == NULL)

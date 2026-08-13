@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// Remember to store in Vector its not in VSC where we are creating a graph
 class Solution {
 public:
 

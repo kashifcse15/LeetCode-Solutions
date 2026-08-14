@@ -12,7 +12,7 @@
 class Solution {
 public:
 void dfs(TreeNode* root,string path,vector<string>&result){
-    if(root) return;
+    if(!root) return;
 
     if(path==""){
         path+=to_string(root->val);

@@ -9,7 +9,7 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class Solution { O(log n)
 public:
     int countNodes(TreeNode* root) {
         if(root==NULL){
@@ -22,7 +22,7 @@ public:
     }
 };
 
-//THIS IS MORE OPTIMAL 
+//THIS IS MORE OPTIMAL O(log n)
 
 class Solution {
 public:

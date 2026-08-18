@@ -21,7 +21,7 @@ public:
         if(LeftLCA && rightLCA){
             return root;
         }
-        else if(LeftLCA=NULL){
+        else if(LeftLCA!=NULL){
            
             return LeftLCA;
         }

@@ -24,11 +24,11 @@ public:
             long long first, last;
 
             for (int i = 0; i < size; i++) {
-                long long currIndex = q.front().second - minIndex;
+                currIndex = q.front().second - minIndex;
                 TreeNode* node = q.front().first;
                 q.pop();
 
-                
+                if (i == 0) first = currIndex;
                 if (i == size - 1) last = currIndex;
 
                 if (node->left)

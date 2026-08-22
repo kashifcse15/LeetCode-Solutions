@@ -28,7 +28,7 @@ public:
                 TreeNode* node = q.front().first;
                 q.pop();
 
-                if (i == 0) first = currIndex;
+                
                 if (i == size - 1) last = currIndex;
 
                 if (node->left)
@@ -37,7 +37,7 @@ public:
                     q.push({node->right, 2 * currIndex + 1});
             }
 
-            maxWidth = (maxWidth, last - first + 1);
+            maxWidth = max(maxWidth, last - first + 1);
         }
 
         return (int)maxWidth;

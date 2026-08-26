@@ -20,7 +20,7 @@ public:
             return false;
         }
 
-        return solve(root->left, minVl, root->val) &&
+        return solve(root->left, minVal, root->val) &&
                solve(root->right, root->val, maxVal);
     }
 

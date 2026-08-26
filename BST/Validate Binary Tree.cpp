@@ -28,4 +28,17 @@ public:
         return solve(root, LLONG_MIN, LLONG_MAX);
     }
 };
+
+//ANOTHER METHOD
+// bool isValidBST(TreeNode* root) {
+    //     if(!root) return true;
+    //     if(root->left!=NULL && root->left->val >= root->val) return false;
+    //     if(root->right!=NULL && root->right->val <= root->val) return false;
+    //     isValidBST(root->left);
+    //     isValidBST(root->right);
+
+    //     return true;
+    // }
+// };
+
     

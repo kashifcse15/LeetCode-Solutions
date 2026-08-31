@@ -61,7 +61,7 @@ public:  // this function just finds the node which is just behind the key
 
             }    
         }
-            return ;
+            return dummy;
 
     }
 };

@@ -21,7 +21,10 @@ public:
                 Node* next = curr->next;  // store next
                 Node* child = flatten(curr->child);  // flatten child list
 
-                
+                // Attach child
+                curr->next = child;
+                child->prev = curr;
+                curr->child = nullptr;
 
                 // Go to the tail of the child list
                 Node* temp = child;

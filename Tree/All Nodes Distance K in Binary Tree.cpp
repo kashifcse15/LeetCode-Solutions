@@ -58,7 +58,7 @@ public:
         vector<int>result;
         while(!q.empty()){
             TreeNode* current=q.front();
-            
+            q.pop();
             result.push_back(current->val);
         }
         return result;

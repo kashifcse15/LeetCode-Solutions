@@ -32,4 +32,39 @@ public:
     return ans;  //1 2 3 # # 4 5 # # # #
 }
 
+// Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+       
+        stringstream ss(data);
+        string str;
+        ss >> str;
+        TreeNode* root = new TreeNode(stoi(str));
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()) {
+        TreeNode* node = q.front();
+        q.pop();
+        // LEFT CHILD
+        ss >> str;
+        if(str != "#") {
+            TreeNode* leftNode = new TreeNode(stoi(str));
+            node->left = leftNode;
+            q.push(leftNode);
+            }
+            // RIGHT CHILD
+            ss >> str;
+            if(str != "#") {
+                TreeNode* rightNode = new TreeNode(stoi(str));
+                node->right = rightNode;
+                q.push(rightNode);
+            }
+        }
+        return root;
+    }
+};
+
+// Your Codec object will be instantiated and called as such:
+// Codec ser, deser;
+// TreeNode* ans = deser.deserialize(ser.serialize(root));
+
     

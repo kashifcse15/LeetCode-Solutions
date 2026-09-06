@@ -15,7 +15,7 @@ public:
     string ans = "";
     queue<TreeNode*> q;
     q.push(root);
-
+    q.pop();
     while(!q.empty()) {
         TreeNode* node = q.front();
         

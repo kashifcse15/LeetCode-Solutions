@@ -33,9 +33,10 @@ public:
 }
 
 // Decodes your encoded data to tree.
+//learn the binary manuplation for ss>>str
     TreeNode* deserialize(string data) {
        if(data.size() == 0) return NULL;
-        stringstream ss(data);
+        stringstream ss(data); //convert string input one by one to char
         string str;
         ss >> str;
         TreeNode* root = new TreeNode(stoi(str));

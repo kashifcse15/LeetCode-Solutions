@@ -34,7 +34,7 @@ public:
 
 // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
-       
+       if(data.size() == 0) return NULL;
         stringstream ss(data);
         string str;
         ss >> str;

@@ -93,4 +93,9 @@ public:
 };
 
 
+//Safe Node = Starting from this Node you can never get Stuck in a Cycle
+//Why revGraph? Because when a node becomes safe, we need to find which nodes were pointing to it.
+
+
+
 

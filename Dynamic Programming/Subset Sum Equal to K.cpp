@@ -69,3 +69,34 @@ public:
    }
 };
 
+
+// SPACE OPTIMIZATION-1
+class Solution{
+public:
+   bool subsetSum(vector<int>& arr, int k){
+      int n=arr.size();
+      vector<bool>prev(k+1, false);
+      vector<bool>curr(k+1, false);
+
+      prev[0]=true;
+      
+      if(arr[0]<=k){
+         prev[arr[0]]=true;
+      }
+
+      for(int ind=1;ind<n;ind++){
+         curr[0]=true;
+         for(int target=1;target<k=k;target++){
+             bool notPick=prev[target];
+             bool pick=false;
+             if(arr[ind] <= target){
+             pick=prev[target-arr[ind]];
+             }
+            curr[target]=pick || notPick;
+         }
+         prev=curr;
+      }
+      return prev[k];
+   }
+};
+

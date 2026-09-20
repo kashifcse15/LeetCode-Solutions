@@ -85,7 +85,9 @@ public:
                 }
 
                 curr[w] = max(take, notTake);
-            }
+            }          
+            // Current row becomes previous row
+            prev = curr;
         }
 
         return prev[W];

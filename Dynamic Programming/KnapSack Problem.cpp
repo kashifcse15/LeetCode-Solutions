@@ -64,37 +64,28 @@ public:
 };
 
 
-class Solution {
+class Solution { // SPACE OPTIMIZATION
 public:
 
     int knapSack(vector<int>& wt, vector<int>& val, int W) {
       int n = val.size();
-
+        vector<int> prev(W + 1, 0);
+        vector<int> curr(W + 1, 0);
         // Base case: only item 0
         for(int w = wt[0]; w <= W; w++) {
             prev[w] = val[0];
         }
-
         // Process remaining items
         for(int idx = 1; idx < n; idx++) {
-
             for(int w = 0; w <= W; w++) {
-
-                // Don't take
                 int notTake = prev[w];
-
-                // Take
                 int take = 0;
-
                 if(wt[idx] <= w) {
                     take = val[idx] + prev[w - wt[idx]];
                 }
 
                 curr[w] = max(take, notTake);
             }
-
-            // Current row becomes previous row
-            prev = curr;
         }
 
         return prev[W];

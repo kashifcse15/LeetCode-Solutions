@@ -93,4 +93,49 @@ public:
     }
 };
 
+//TABULATION 
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+
+        int sum = 0;
+
+        for(int x : nums)
+            sum += x;
+
+        if(sum % 2 != 0)
+            return false;
+
+        int target = sum / 2;
+        int n = nums.size();
+
+        vector<vector<bool>> dp(n + 1,
+                                vector<bool>(target + 1, false));
+
+        // Base case:
+        // target = 0 is always possible
+        for(int i = 0; i <= n; i++)
+            dp[i][0] = true;
+
+        // Fill table
+        for(int i = n - 1; i >= 0; i--) {
+
+            for(int t = 1; t <= target; t++) {
+
+                // Don't take
+                bool notTake = dp[i + 1][t];
+
+                // Take
+                bool take = false;
+
+                if(nums[i] <= t)
+                    take = dp[i + 1][t - nums[i]];
+
+                dp[i][t] = take || notTake;
+            }
+        }
+
+        return dp[0][target];
+    }
+};
 

@@ -93,3 +93,23 @@ public:
         return prev[W];
     }
 };
+
+
+class Solution {
+public:
+
+    int knapSack(vector<int>& wt, vector<int>& val, int W) {
+
+        int n = val.size();
+        vector<int> dp(W + 1, 0);
+        for(int idx = 0; idx < n; idx++) {
+            for(int w = W; w >= wt[idx]; w--) {
+                int notTake = dp[w];
+                int take = val[idx] + dp[w - wt[idx]];
+              
+            }
+        }
+
+        return dp[W];
+    }
+};

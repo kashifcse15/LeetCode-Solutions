@@ -95,18 +95,17 @@ public:
 };
 
 
-class Solution {
+class Solution { // SPACE OPTIMIZATION 2D ---> 1D
 public:
 
     int knapSack(vector<int>& wt, vector<int>& val, int W) {
-
         int n = val.size();
         vector<int> dp(W + 1, 0);
         for(int idx = 0; idx < n; idx++) {
             for(int w = W; w >= wt[idx]; w--) {
                 int notTake = dp[w];
                 int take = val[idx] + dp[w - wt[idx]];
-              
+                dp[w] = max(take, notTake);
             }
         }
 

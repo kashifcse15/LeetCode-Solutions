@@ -139,3 +139,50 @@ public:
     }
 };
 
+//SPACE OPTIMIZATION 
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+
+        int sum = 0;
+
+        for(int x : nums)
+            sum += x;
+
+        if(sum % 2 != 0)
+            return false;
+
+        int target = sum / 2;
+
+        vector<bool> next(target + 1, false);
+
+        // target = 0 is always possible
+        next[0] = true;
+
+        for(int i = nums.size() - 1; i >= 0; i--) {
+
+            vector<bool> curr(target + 1, false);
+
+            curr[0] = true;
+
+            for(int t = 1; t <= target; t++) {
+
+                // Don't take
+                bool notTake = next[t];
+
+                // Take
+                bool take = false;
+
+                if(nums[i] <= t)
+                    take = next[t - nums[i]];
+
+                curr[t] = take || notTake;
+            }
+
+            next = curr;
+        }
+
+        return next[target];
+    }
+};
+

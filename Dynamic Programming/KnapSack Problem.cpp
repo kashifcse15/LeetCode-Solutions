@@ -62,3 +62,41 @@ public:
         return dp[n - 1][W];
     }
 };
+
+
+class Solution {
+public:
+
+    int knapSack(vector<int>& wt, vector<int>& val, int W) {
+      int n = val.size();
+
+        // Base case: only item 0
+        for(int w = wt[0]; w <= W; w++) {
+            prev[w] = val[0];
+        }
+
+        // Process remaining items
+        for(int idx = 1; idx < n; idx++) {
+
+            for(int w = 0; w <= W; w++) {
+
+                // Don't take
+                int notTake = prev[w];
+
+                // Take
+                int take = 0;
+
+                if(wt[idx] <= w) {
+                    take = val[idx] + prev[w - wt[idx]];
+                }
+
+                curr[w] = max(take, notTake);
+            }
+
+            // Current row becomes previous row
+            prev = curr;
+        }
+
+        return prev[W];
+    }
+};

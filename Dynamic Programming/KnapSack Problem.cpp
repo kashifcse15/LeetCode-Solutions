@@ -40,34 +40,25 @@ class Solution{
 
 class Solution {
 public:
-
     int knapSack(vector<int>& wt, vector<int>& val, int W) {
-
         int n = val.size();
-
         vector<vector<int>> dp(n, vector<int>(W + 1, 0));
-
-       
+        // Base case: idx = 0
+        for(int w = wt[0]; w <= W; w++) {
+            dp[0][w] = val[0];
+        }
 
         // Fill the table
         for(int idx = 1; idx < n; idx++) {
-
-            for(int w = 0; w <= W; w++) {
-
-                // Don't take
+            for(int w = 0; w <= W; w++){
                 int notTake = dp[idx - 1][w];
-
-                // Take
                 int take = 0;
-
                 if(wt[idx] <= w) {
                     take = val[idx] + dp[idx - 1][w - wt[idx]];
                 }
-
-                dp[idx][w] = max(take, notTake);
+               
             }
         }
-
         return dp[n - 1][W];
     }
 };

@@ -39,3 +39,58 @@ public:
         return solve(0, target, nums);
     }
 };
+
+//MEMOIZATION 
+class Solution {
+public:
+
+    bool solve(int i, int target, vector<int>& nums,
+               vector<vector<int>>& dp) {
+
+        // Target achieved
+        if(target == 0)
+            return true;
+
+        // No elements left
+        if(i == nums.size())
+            return false;
+
+        // Already calculated
+        if(dp[i][target] != -1)
+            return dp[i][target];
+
+        // Don't take
+        bool notTake = solve(i + 1, target, nums, dp);
+
+        // Take
+        bool take = false;
+
+        if(nums[i] <= target)
+            take = solve(i + 1, target - nums[i], nums, dp);
+
+        return dp[i][target] = take || notTake;
+    }
+
+    bool canPartition(vector<int>& nums) {
+
+        int sum = 0;
+
+        for(int x : nums)
+            sum += x;
+
+        // Odd sum → cannot divide equally
+        if(sum % 2 != 0)
+            return false;
+
+        int target = sum / 2;
+
+        vector<vector<int>> dp(
+            nums.size(),
+            vector<int>(target + 1, -1)
+        );
+
+        return solve(0, target, nums, dp);
+    }
+};
+
+

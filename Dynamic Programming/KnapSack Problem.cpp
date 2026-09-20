@@ -38,7 +38,7 @@ class Solution{
 }
 
 
-class Solution {
+class Solution { // TABULATION
 public:
     int knapSack(vector<int>& wt, vector<int>& val, int W) {
         int n = val.size();
@@ -56,7 +56,7 @@ public:
                 if(wt[idx] <= w) {
                     take = val[idx] + dp[idx - 1][w - wt[idx]];
                 }
-               
+                dp[idx][w] = max(take, notTake);
             }
         }
         return dp[n - 1][W];

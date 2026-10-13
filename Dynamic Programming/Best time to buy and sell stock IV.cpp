@@ -2,6 +2,11 @@ class Solution {
 public:
     int solve(int i, int buy, int cap, vector<int>& prices) 
 
+         if (i == prices.size() || cap == 0)
+            return 0;
+
+        
+
         if (buy) {
             int take = -prices[i] +
                        solve(i + 1, 0, cap, prices);

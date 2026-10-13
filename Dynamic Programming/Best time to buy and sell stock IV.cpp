@@ -5,7 +5,7 @@ public:
          if (i == prices.size() || cap == 0)
             return 0;
 
-        
+        int profit = 0;
 
         if (buy) {
             int take = -prices[i] +

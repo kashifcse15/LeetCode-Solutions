@@ -1,4 +1,3 @@
-```cpp
 class Solution {
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
@@ -34,8 +33,22 @@ public:
         // Step 4: Kahn's Algorithm
         int count = 0;
 
-        
+        while (!q.empty()) {
+            int node = q.front();
+            q.pop();
+
+            count++;
+
+            for (int neighbour : adj[node]) {
+                indegree[neighbour]--;
+
+                if (indegree[neighbour] == 0) {
+                    q.push(neighbour);
+                }
+            }
+        }
+
         return count == numCourses;
     }
 };
-```
+
